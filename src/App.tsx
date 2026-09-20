@@ -14,8 +14,7 @@ import {
   MousePointerClick,
   FileSearch,
   ExternalLink,
-  ChevronRight,
-  Layers
+  ChevronRight
 } from 'lucide-react';
 
 interface AuditResult {
@@ -258,7 +257,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Colonne Droite : Visuel 3D réel via hébergement direct */}
+          {/* Colonne Droite : Visuel 3D pur sans aucun texte superposé */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
             <div className="relative group w-full max-w-[440px]">
               <div className="relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-950/60 shadow-2xl backdrop-blur-md">
@@ -267,17 +266,6 @@ export default function App() {
                   alt="Décomposition en couches ergonomiques"
                   className="w-full h-auto object-cover select-none"
                 />
-              </div>
-
-              {/* Badges de décomposition */}
-              <div className="absolute -top-3 -right-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-emerald-500/40 text-[11px] font-mono text-emerald-300 shadow-xl backdrop-blur-md flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5" /> Couche UI & Clarté
-              </div>
-              <div className="absolute top-1/2 -left-3 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-cyan-500/40 text-[11px] font-mono text-cyan-300 shadow-xl backdrop-blur-md">
-                Laser Scanner UX
-              </div>
-              <div className="absolute -bottom-3 right-4 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-indigo-500/40 text-[11px] font-mono text-indigo-300 shadow-xl backdrop-blur-md">
-                Socle & Rassurance
               </div>
             </div>
           </div>
