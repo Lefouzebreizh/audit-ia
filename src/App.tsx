@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import heroVisual from '../publihero-3d.png';
 import {
   Zap,
   CheckCircle2,
@@ -16,7 +15,9 @@ import {
   FileSearch,
   ExternalLink,
   ChevronRight,
-  Layers
+  Layers,
+  Flame,
+  Check
 } from 'lucide-react';
 
 interface AuditResult {
@@ -168,7 +169,7 @@ export default function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-8 py-10 flex-1 w-full space-y-16">
         
         {/* Section 2 Colonnes */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Colonne Gauche */}
           <div className="lg:col-span-7 space-y-6 text-left">
@@ -259,27 +260,90 @@ export default function App() {
             </div>
           </div>
 
-          {/* Colonne Droite : Visuel 3D relié directement à publihero-3d.png */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-            <div className="relative group w-full max-w-[420px]">
-              <div className="relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-950/60 shadow-2xl backdrop-blur-md">
-                <img
-                  src={heroVisual}
-                  alt="Décomposition en couches ergonomiques"
-                  className="w-full h-auto object-cover select-none"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-60" />
+          {/* Colonne Droite : Visuel 3D 100% Code (Perspective + Cartes en Verre + Scanner Laser) */}
+          <div className="lg:col-span-5 flex justify-center items-center py-6">
+            <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center select-none" style={{ perspective: '1000px' }}>
+              
+              {/* Halo néon d'arrière-plan */}
+              <div className="absolute inset-0 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Ligne Laser Scanner */}
+              <div className="absolute inset-x-4 h-[3px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_20px_#10b981] z-30 animate-pulse pointer-events-none" style={{ top: '48%' }} />
+
+              {/* Conteneur 3D Isométrique */}
+              <div className="relative w-[320px] h-[340px] transition-transform duration-700 hover:rotate-x-6 hover:rotate-y-[-10deg]" style={{ transform: 'rotateX(22deg) rotateY(-18deg) rotateZ(6deg)', transformStyle: 'preserve-3d' }}>
+                
+                {/* Couche 1 (Fond) : Socle Données & Conversion */}
+                <div 
+                  className="absolute inset-0 rounded-2xl bg-slate-950/80 border border-indigo-500/30 p-5 shadow-2xl backdrop-blur-md flex flex-col justify-between"
+                  style={{ transform: 'translateZ(-40px)', boxShadow: '0 25px 50px -12px rgba(99, 102, 241, 0.2)' }}
+                >
+                  <div className="flex items-center justify-between text-indigo-400 text-xs font-mono">
+                    <span className="flex items-center gap-1.5"><Layers className="w-3.5 h-3.5" /> SOCLE DE CONVERSION</span>
+                    <span className="text-[10px] bg-indigo-500/20 px-2 py-0.5 rounded">COUCHE 01</span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-2 w-3/4 bg-indigo-500/20 rounded" />
+                    <div className="h-2 w-1/2 bg-indigo-500/15 rounded" />
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-between text-[11px] text-indigo-300">
+                    <span>Tunnel d'acquisition</span>
+                    <span className="font-bold text-white">98.2%</span>
+                  </div>
+                </div>
+
+                {/* Couche 2 (Milieu) : Rassurance & Crédibilité */}
+                <div 
+                  className="absolute inset-0 rounded-2xl bg-slate-900/80 border border-cyan-500/40 p-5 shadow-2xl backdrop-blur-md flex flex-col justify-between"
+                  style={{ transform: 'translateZ(30px)', boxShadow: '0 25px 50px -12px rgba(6, 182, 212, 0.25)' }}
+                >
+                  <div className="flex items-center justify-between text-cyan-400 text-xs font-mono">
+                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5" /> RASSURANCE & PREUVES</span>
+                    <span className="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded">COUCHE 02</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 my-auto">
+                    <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-center">
+                      <div className="text-xs font-bold text-cyan-300">Avis 4.9★</div>
+                      <div className="text-[9px] text-slate-400">Vérifiés</div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-center">
+                      <div className="text-xs font-bold text-cyan-300">Garantie</div>
+                      <div className="text-[9px] text-slate-400">Décennale</div>
+                    </div>
+                  </div>
+                  <div className="text-[11px] text-slate-400 flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5 text-cyan-400" /> Confiance immédiate validée
+                  </div>
+                </div>
+
+                {/* Couche 3 (Haut) : Interface UI & Accroche Laser */}
+                <div 
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-900/90 to-emerald-950/40 border-2 border-emerald-400/60 p-5 shadow-2xl backdrop-blur-xl flex flex-col justify-between"
+                  style={{ transform: 'translateZ(100px)', boxShadow: '0 30px 60px -15px rgba(16, 185, 129, 0.35)' }}
+                >
+                  <div className="flex items-center justify-between text-emerald-400 text-xs font-mono">
+                    <span className="flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-emerald-400" /> ACCROCHE & CLARTÉ</span>
+                    <span className="text-[10px] bg-emerald-500/30 text-emerald-200 px-2 py-0.5 rounded font-bold">ACTIF</span>
+                  </div>
+                  <div className="space-y-2.5 my-auto">
+                    <div className="h-3 w-5/6 bg-gradient-to-r from-emerald-400 to-teal-300 rounded-md" />
+                    <div className="h-2 w-4/6 bg-slate-700/60 rounded" />
+                    <div className="h-2 w-3/6 bg-slate-800/60 rounded" />
+                  </div>
+                  <div className="py-2 px-3 rounded-xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-emerald-200">Appel à l'action</span>
+                    <div className="w-5 h-5 rounded-full bg-emerald-400 flex items-center justify-center text-slate-950 font-black text-[10px]">→</div>
+                  </div>
+                </div>
+
               </div>
 
-              {/* Badges de décomposition */}
-              <div className="absolute -top-3 -right-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-emerald-500/40 text-[11px] font-mono text-emerald-300 shadow-xl backdrop-blur-md flex items-center gap-1.5">
+              {/* Étiquettes flottantes en verre */}
+              <div className="absolute top-4 right-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-emerald-500/40 text-[11px] font-mono text-emerald-300 shadow-xl backdrop-blur-md flex items-center gap-1.5 z-40">
                 <Layers className="w-3.5 h-3.5" /> Couche UI & Clarté
               </div>
-              <div className="absolute top-1/2 -left-3 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-cyan-500/40 text-[11px] font-mono text-cyan-300 shadow-xl backdrop-blur-md">
+              <div className="absolute bottom-6 left-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-cyan-500/40 text-[11px] font-mono text-cyan-300 shadow-xl backdrop-blur-md flex items-center gap-1.5 z-40">
                 Laser Scanner UX
-              </div>
-              <div className="absolute -bottom-3 right-4 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-indigo-500/40 text-[11px] font-mono text-indigo-300 shadow-xl backdrop-blur-md">
-                Socle & Rassurance
               </div>
             </div>
           </div>
