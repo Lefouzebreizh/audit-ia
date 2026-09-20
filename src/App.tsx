@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import heroVisual from '../publihero-3d.png';
 import {
   Zap,
   CheckCircle2,
@@ -263,7 +264,7 @@ export default function App() {
             <div className="relative group w-full max-w-[420px]">
               <div className="relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-950/60 shadow-2xl backdrop-blur-md">
                 <img
-                  src="/publihero-3d.png"
+                  src={heroVisual}
                   alt="Décomposition en couches ergonomiques"
                   className="w-full h-auto object-cover select-none"
                 />
